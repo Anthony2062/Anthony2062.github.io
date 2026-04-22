@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mojave Express - Ordem de Entrega</title>
+    <style>
+        body {
+            background-image: url('https://wallpaperaccess.com/full/1594982.jpg'); 
+            background-size: cover;
+            background-color: #3b2f2f;
+            color: #ffb642; /* Âmbar do New Vegas */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+        }
+
+        .contract-paper {
+            background: rgba(20, 20, 20, 0.95);
+            border: 4px solid #ffb642;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+        }
+
+        h1 { 
+            text-align: center; 
+            text-transform: uppercase; 
+            border-bottom: 2px dashed #ffb642; 
+            padding-bottom: 20px;
+        }
+
+        .stamp {
+            border: 3px double #ff0000;
+            color: #ff0000;
+            display: inline-block;
+            padding: 5px 10px;
+            transform: rotate(-5deg);
+            font-weight: bold;
+            font-size: 1.2rem;
+            float: right;
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+
+        input[type="text"], textarea {
+            width: 95%;
+            background: #2a2a2a;
+            border: 1px solid #ffb642;
+            color: #ffb642;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .perks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button.sign-btn {
+            background: #ffb642;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+        }
+
+        button.sign-btn:hover { background: #fff; }
+
+    </style>
+</head>
+<body>
+
+    <div class="contract-paper">
+        <div class="stamp">APROVADO PELA NCR</div>
+        <h1>CONTRATO DE ENTREGA - MOJAVE EXPRESS</h1>
+        
+        <p><strong>Nº do Pedido:</strong> 6-PLATINUM-CHIP</p>
+        <p><strong>Cliente:</strong> Sr. House / New California Republic</p>
+
+        <form>
+            <div class="form-group">
+                <label>NOME DO ENTREGADOR (COURIER):</label>
+                <input type="text" value="Courier Six" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>DESTINO FINAL:</label>
+                <input type="text" placeholder="The Strip, New Vegas">
+            </div>
+
+            <div class="form-group">
+                <label>MOTIVAÇÃO (S.P.E.C.I.A.L):</label>
+                <div class="perks">
+                    <label><input type="radio" name="special" checked> Força (Carregar muito loot)</label>
+                    <label><input type="radio" name="special"> Carisma (Lábia 100)</label>
+                    <label><input type="radio" name="special"> Inteligência (Hacker)</label>
+                    <label><input type="radio" name="special"> Sorte (Ganhar no Cassino)</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>OBSERVAÇÕES DO CONTRATO:</label>
+                <textarea rows="4">O portador deste documento tem permissão de livre passagem pelos checkpoints da NCR. Cuidado com a Legião.</textarea>
+            </div>
+
+            <p style="font-size: 0.8rem; margin-top: 30px; text-align: justify;">
+                <em>*Ao assinar, você aceita os riscos de morte por Deathclaws, Cazadores ou radiação. A Mojave Express não cobre despesas com Stimpacks.*</em>
+            </p>
+
+            <button type="button" class="sign-btn" onclick="entrarComoAdmin()">ASSINAR E ENTRAR</button>
+        </form>
+    </div>
+
+    <script>
+        function entrarComoAdmin() {
+            alert('Bem-vindo à República, Ranger! Acesso de administrador concedido.');
+            window.location.href = 'cardapio_admin.html';
+        }
+    </script>
+
+</body>
+</html>

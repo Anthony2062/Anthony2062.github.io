@@ -1,0 +1,23 @@
+Função do cálculo do carrinho:
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            document.getElementById('total-caps').textContent = total;
+            console.log(`Adicionado: ${name}`);
+        }
+
+        function openCheckout() {
+            if(total === 0) return alert("Seu inventário está vazio!");
+            let msg = `FINALIZAR PEDIDO NO TERMINAL?\nTotal: ${total} Tampas`;
+            if(confirm(msg)) {
+                alert("Pedido enviado via rádio para a RNC!");
+                cart = [];
+                total = 0;
+                document.getElementById('total-caps').textContent = total;
+            }
+        }

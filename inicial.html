@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIP-BOY 3000 - MENU PRINCIPAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTÉTICA FALLOUT --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #080a08;
+            color: #1aff80; /* Verde Terminal */
+            font-family: 'VT323', monospace;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* --- GIF DE FUNDO (TELA INTEIRA) --- */
+        #full-screen-bg-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Fica atrás de tudo */
+
+            /* --- TROQUE O NOME DO ARQUIVO AQUI --- */
+            background-image: url('gifdofundo.gif'); 
+            
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            /* Filtro verde para integrar ao estilo Fallout */
+            filter: grayscale(100%) sepia(100%) hue-rotate(50deg) saturate(300%) contrast(1.2);
+            opacity: 0.4; /* Opacidade baixa para não atrapalhar a leitura */
+        }
+
+        /* Efeito de Monitor CRT (Scanlines) */
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Moldura do Pip-Boy */
+        .pipboy-container {
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            border: 4px solid #3d4a3d;
+            
+            /* Fundo PRETO COM TRANSPARÊNCIA para ver o GIF atrás */
+            background: rgba(0, 0, 0, 0.75);
+            
+            box-shadow: 0 0 20px #1aff80 inset;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        /* Conteúdo interno */
+        .pipboy-content {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Cabeçalho com Status */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #1aff80;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            text-align: center;
+            text-shadow: 0 0 5px #1aff80;
+        }
+
+        /* Botões de Navegação */
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: auto;
+            margin-top: 20px;
+        }
+
+        .btn-action {
+            background: rgba(0, 0, 0, 0.5); /* Mais transparente */
+            color: #1aff80;
+            border: 2px solid #1aff80;
+            padding: 15px 40px;
+            font-family: 'VT323', monospace;
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 80%;
+            transition: 0.2s;
+            text-transform: uppercase;
+            position: relative;
+            text-align: left;
+        }
+
+        .btn-action:hover {
+            background: #1aff80;
+            color: #000;
+            box-shadow: 0 0 15px #1aff80;
+        }
+
+        .btn-action::before {
+            content: "> ";
+            opacity: 0;
+            position: absolute;
+            left: 10px;
+        }
+        .btn-action:hover::before { opacity: 1; }
+
+        /* Rodapé com Status */
+        .footer-status {
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-around;
+            border-top: 2px solid #1aff80;
+            padding-top: 10px;
+        }
+
+        /* Controle de Música */
+        .radio-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 200;
+            font-family: sans-serif;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script src="dados.js"></script>
+</head>
+<body>
+
+    <div id="full-screen-bg-gif"></div>
+
+    <div class="crt-overlay"></div>
+
+    <div class="pipboy-container">
+        
+        <div class="pipboy-content">
+            <div class="header">
+                <span>HP: 100/100</span>
+                <span>LEVEL 25</span>
+                <span>AP: 85/90</span>
+            </div>
+
+            <h1>BEM-VINDO, COURIER</h1>
+            <p style="text-align: center;">SELECIONE UMA OPERAÇÃO:</p>
+
+            <div class="nav-buttons">
+                <button class="btn-action" onclick="window.location.href='cardapio.html'">
+                    [ LOJA ] ACESSAR ATOMIC SHOP
+                </button>
+
+                <button class="btn-action" onclick="window.location.href='Socios.html'">
+                    [ ADMIN ] IDENTIFICAÇÃO (COURIER 6)
+                </button>
+                
+                <button class="btn-action" onclick="window.location.href='Login.html'" style="border-color: #ff4444; color: #ff4444;">
+                    [ SAIR ] LOGOFF DO SISTEMA
+                </button>
+            </div>
+
+            <div class="footer-status">
+                <span>RADS: 0</span>
+                <span>FOME: 5%</span>
+                <span>SEDE: 16%</span>
+            </div>
+        </div>
+    </div>
+
+    <button id="muteBtn" class="radio-btn" onclick="toggleMute()">LIGAR RÁDIO NEW VEGAS</button>
+    
+    <audio id="bg-music" loop>
+        <source src="música1.mp4" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const musica = document.getElementById('bg-music');
+        const muteBtn = document.getElementById('muteBtn');
+        musica.volume = 0.4;
+
+        function toggleMute() {
+            if (musica.paused) {
+                musica.play();
+                muteBtn.textContent = "DESLIGAR RÁDIO";
+                muteBtn.style.background = "#1aff80";
+                muteBtn.style.color = "#000";   
+            } else {
+                musica.pause();
+                muteBtn.textContent = "LIGAR RÁDIO NEW VEGAS";
+                muteBtn.style.background = "#333";
+                muteBtn.style.color = "#fff";
+            }
+        }
+        
+        document.body.addEventListener('click', () => {
+            if(musica.paused) toggleMute();
+        }, { once: true });
+    </script>
+</body>
+</html>

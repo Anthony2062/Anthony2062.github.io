@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOMIC SHOP - ADMIN MODE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 0 100px 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: #ff4444; /* Vermelho/Laranja de Alerta/Admin */
+            min-height: 100vh;
+            
+            /* --- IMAGEM DE FUNDO --- */
+            background-image: url('ncraura.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* --- OVERLAY ESCURO --- */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: -1;
+        }
+
+        .btn-back {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #ff4444;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1500;
+            box-shadow: 0 0 10px #ff4444;
+        }
+
+        .menu-container {
+            max-width: 800px;
+            margin: auto;
+            border: 2px solid #ff4444;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); 
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
+            position: relative;
+        }
+
+        h1 { 
+            text-align: center; 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            border-bottom: 2px dashed #ff4444; 
+            padding-bottom: 20px;
+            text-shadow: 0 0 10px #ff4444;
+        }
+        
+        h3 { text-align: center; font-size: 0.9rem; margin-top: -10px; color: #fff; }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #ff4444;
+            padding: 15px 0;
+            align-items: center;
+        }
+
+        /* Estilo dos Inputs */
+        input[type="number"] {
+            background: #000;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+            padding: 5px;
+            font-family: 'Courier New', monospace;
+            width: 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-save {
+            background: transparent;
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 5px 15px;
+            cursor: pointer;
+            margin-left: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .btn-save:hover { background: #ff4444; color: #000; box-shadow: 0 0 10px #ff4444; }
+
+        /* Barra de Status Inferior */
+        #admin-status {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ff4444;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 100;
+        }
+
+        /* --- BOTÃO DE RÁDIO (ADMIN STYLE) --- */
+        .radio-btn {
+            position: fixed;
+            bottom: 50px; /* Um pouco acima da barra de status */
+            right: 20px;
+            background: #000;
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 8px 15px;
+            cursor: pointer;
+            z-index: 200;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 5px #ff4444;
+        }
+        .radio-btn:hover {
+            background: #ff4444;
+            color: #000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <button class="btn-back" onclick="window.location.href='Inicial.html'"><< SAIR DO MODO ADMIN</button>
+
+    <div class="menu-container">
+        <h1>-- ATOMIC SHOP: ADMIN --</h1>
+        <h3>USUÁRIO LOGADO: COURIER SIX</h3>
+        
+        <div class="item">
+            <div>
+                <strong>Nuka-Cola Quantum</strong><br>
+                <small>ID: ITEM_001</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-nuka" value="35" min="10">
+                <button class="btn-save" onclick="updatePrice('Nuka-Cola Quantum', 'price-nuka')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Salisbury Steak</strong><br>
+                <small>ID: ITEM_002 (Bife Processado)</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-steak" value="30" min="10">
+                <button class="btn-save" onclick="updatePrice('Salisbury Steak', 'price-steak')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Pacote de RadAway</strong><br>
+                <small>ID: ITEM_003</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-rad" value="120" min="10">
+                <button class="btn-save" onclick="updatePrice('RadAway', 'price-rad')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Stimpak</strong><br>
+                <small>ID: ITEM_004 (Cura)</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-stim" value="75" min="10">
+                <button class="btn-save" onclick="updatePrice('Stimpak', 'price-stim')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Inalador de Jet</strong><br>
+                <small>ID: ITEM_005 (Químico)</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-jet" value="45" min="10">
+                <button class="btn-save" onclick="updatePrice('Jet', 'price-jet')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Água Purificada</strong><br>
+                <small>ID: ITEM_006</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-water" value="20" min="10">
+                <button class="btn-save" onclick="updatePrice('Água Purificada', 'price-water')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Torta Perfeitamente Preservada</strong><br>
+                <small>ID: ITEM_007 (Raro)</small>
+            </div>
+            <div>
+                <label>VALOR:</label>
+                <input type="number" id="price-pie" value="500" min="10">
+                <button class="btn-save" onclick="updatePrice('Torta Perfeitamente Preservada', 'price-pie')">SALVAR E COMPRAR</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-status">
+        STATUS DO SISTEMA: AGUARDANDO COMANDOS...
+    </div>
+
+    <button id="muteBtn" class="radio-btn" onclick="toggleMute()">▶ LIGAR TRANSMISSÃO</button>
+    <audio id="bg-music" loop>
+        <source src="música2.mp4" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // --- LÓGICA DO PREÇO ---
+        function updatePrice(itemName, inputId) {
+            const inputElement = document.getElementById(inputId);
+            const newPrice = parseInt(inputElement.value);
+            const status = document.getElementById('admin-status');
+
+            if (newPrice < 10) {
+                alert("ERRO DE PROTOCOLO: O valor mínimo permitido pela NCR é de 10 Tampas.");
+                inputElement.value = 10;
+                status.textContent = "ERRO: VALOR INVÁLIDO DETECTADO.";
+                return;
+            }
+
+            status.textContent = `PROCESSANDO: Valor de ${itemName} atualizado e comprado para ${newPrice} CAPS.`;
+            alert(`SUCESSO!\nO preço de [${itemName}] foi alterado e comprado para ${newPrice} Tampas.`);
+            
+            inputElement.style.backgroundColor = "#ff4444";
+            inputElement.style.color = "#000";
+            setTimeout(() => {
+                inputElement.style.backgroundColor = "#000";
+                inputElement.style.color = "#ff4444";
+            }, 500);
+        }
+
+        // --- LÓGICA DA MÚSICA ---
+        const musica = document.getElementById('bg-music');
+        const muteBtn = document.getElementById('muteBtn');
+        musica.volume = 0.4;
+
+        function toggleMute() {
+            if (musica.paused) {
+                musica.play();
+                muteBtn.textContent = "II PAUSAR TRANSMISSÃO";
+                muteBtn.style.background = "#ff4444";
+                muteBtn.style.color = "#000";
+            } else {
+                musica.pause();
+                muteBtn.textContent = "▶ LIGAR TRANSMISSÃO";
+                muteBtn.style.background = "#000";
+                muteBtn.style.color = "#ff4444";
+            }
+        }
+        
+        // Tenta tocar ao clicar em qualquer lugar se não tiver tocando
+        document.body.addEventListener('click', () => {
+            if(musica.paused) toggleMute();
+        }, { once: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOMIC SHOP - Suprimentos de Sobrevivência</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 0 100px 0;
+            background-color: #0c0d0c; /* Escuro Fallout */
+            font-family: 'Courier New', Courier, monospace;
+            color: #1aff80; /* Verde Pip-Boy */
+        }
+
+        /* Estilo Retro-Futurista */
+        .btn-back {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #1aff80;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1500;
+            box-shadow: 0 0 10px #1aff80;
+        }
+
+        .menu-container {
+            max-width: 800px;
+            margin: auto;
+            border: 2px solid #1aff80;
+            padding: 20px;
+            background: rgba(26, 255, 128, 0.05);
+        }
+
+        h1 { text-align: center; text-transform: uppercase; letter-spacing: 5px; }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #1aff80;
+            padding: 15px 0;
+            align-items: center;
+        }
+
+        .btn-add {
+            background: transparent;
+            color: #1aff80;
+            border: 1px solid #1aff80;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .btn-add:hover { background: #1aff80; color: #000; }
+
+        /* Carrinho Flutuante */
+        #cart-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1aff80;
+            color: #000;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-back" onclick="window.location.href='Inicial.html'"><< VOLTAR A INTERFACE DO PIP-BOY</button>
+
+    <div class="menu-container">
+        <h1>-- ATOMIC SHOP MENU --</h1>
+        
+        <div class="item">
+            <div>
+                <strong>Nuka-Cola Quantum</strong><br>
+                <small>Cuidado: Pode causar brilho noturno.</small>
+            </div>
+            <div>
+                <span>35 TAMPAS</span>
+                <button class="btn-add" onclick="addToCart('Nuka-Cola Quantum', 35)">ADICIONAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+        <div class="item">
+            <div>
+                <strong>Pacote de RadAway</strong><br>
+                <small>Essencial para sua sobrevivência.</small>
+            </div>
+            <div>
+                <span>120 TAMPAS</span>
+                <button class="btn-add" onclick="addToCart('RadAway', 120)">ADICIONAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Stimpak</strong><br>
+                <small>Cura ferimentos e membros quebrados.</small>
+            </div>
+            <div>
+                <span>75 TAMPAS</span>
+                <button class="btn-add" onclick="addToCart('Stimpak', 75)">ADICIONAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Inalador de Jet</strong><br>
+                <small>+ AP Máximo. Altamente viciante.</small>
+            </div>
+            <div>
+                <span>45 TAMPAS</span>
+                <button class="btn-add" onclick="addToCart('Jet', 45)">ADICIONAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Água Purificada</strong><br>
+                <small>H2O Limpa. Remove sede sem radiação.</small>
+            </div>
+            <div>
+                <span>80 TAMPAS</span>
+                <button class="btn-add" onclick="addToCart('Água Purificada', 20)">ADICIONAR</button>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <strong>Torta Perfeitamente Preservada</strong><br>
+                <small>Uma relíquia da Port-A-Diner. Raríssima.</small>
+            </div>
+            <div>
+                <span>500 TAMPAS</span>
+                <button class="btn-add" onclick="addToCart('Torta Perfeitamente Preservada', 500)">ADICIONAR</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="cart-counter" onclick="openCheckout()">
+        CARRINHO: <span id="total-caps">0</span> TAMPAS
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            document.getElementById('total-caps').textContent = total;
+            console.log(`Adicionado: ${name}`);
+        }
+
+        function openCheckout() {
+            if(total === 0) return alert("Seu inventário está vazio!");
+            let msg = `FINALIZAR PEDIDO NO TERMINAL?\nTotal: ${total} Tampas`;
+            if(confirm(msg)) {
+                alert("Pedido enviado via rádio para a RNC!");
+                cart = [];
+                total = 0;
+                document.getElementById('total-caps').textContent = total;
+            }
+        }
+    </script>
+</body>
+</html>

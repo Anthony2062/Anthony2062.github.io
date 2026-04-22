@@ -1,0 +1,75 @@
+
+var dados = {
+    // descrição e identificação de tudo
+    "loja": {
+        "nome": "Atomic Shop",
+        "proprietario": "Vault-Tec Systems",
+        "produtos": [
+            { "id": 1, "nome": "Nuka-Cola Quantum", "descricao": "Refrigerante isótopo raro. Brilha no escuro.", "preco": 35, "estoque": 12 },
+            { "id": 2, "nome": "Salisbury Steak", "descricao": "Bife processado pré-guerra. Gosto de nostalgia.", "preco": 30, "estoque": 50 },
+            { "id": 3, "nome": "Stimpak", "descricao": "Seringa de cura instantânea. Essencial.", "preco": 75, "estoque": 100 },
+            { "id": 4, "nome": "RadAway", "descricao": "Bolsa intravenosa para limpar radiação.", "preco": 120, "estoque": 25 },
+            { "id": 5, "nome": "Jet", "descricao": "Inalador químico. Aumenta reflexos (AP).", "preco": 45, "estoque": 200 },
+            { "id": 6, "nome": "Água Purificada", "descricao": "Lata de H2O limpa. Sem radiação.", "preco": 20, "estoque": 500 },
+            { "id": 7, "nome": "Torta Perfeitamente Preservada", "descricao": "Sobremesa raríssima da Port-A-Diner.", "preco": 500, "estoque": 1 },
+            { "id": 8, "nome": "Rad-X", "descricao": "Pílula que aumenta resistência à radiação.", "preco": 40, "estoque": 60 },
+            { "id": 9, "nome": "Mentats", "descricao": "Pílulas de giz para aumentar Inteligência.", "preco": 50, "estoque": 45 },
+            { "id": 10, "nome": "Buffout", "descricao": "Esteroides para aumentar Força e Resistência.", "preco": 55, "estoque": 30 },
+            { "id": 11, "nome": "Psycho", "descricao": "Injetável de combate. Aumenta dano causado.", "preco": 60, "estoque": 15 },
+            { "id": 12, "nome": "Stealth Boy", "descricao": "Dispositivo de camuflagem ótica pessoal.", "preco": 300, "estoque": 5 },
+            { "id": 13, "nome": "Caixa de Grampos", "descricao": "Bobby Pins para arrombar fechaduras.", "preco": 10, "estoque": 1000 },
+            { "id": 14, "nome": "Munição 10mm (Caixa)", "descricao": "50 cartuchos padrão para pistolas.", "preco": 80, "estoque": 150 },
+            { "id": 15, "nome": "Núcleo de Fusão", "descricao": "Bateria para Power Armor (Carga 100%).", "preco": 250, "estoque": 8 },
+            { "id": 16, "nome": "Mini Nuke", "descricao": "Ogiva nuclear tática portátil. Cuidado.", "preco": 1500, "estoque": 2 },
+            { "id": 17, "nome": "Espeto de Iguana", "descricao": "Carne assada no palito. Origem duvidosa.", "preco": 15, "estoque": 35 },
+            { "id": 18, "nome": "Bombas de Açúcar", "descricao": "Cereais matinais pré-guerra. 100% açúcar.", "preco": 25, "estoque": 22 },
+            { "id": 19, "nome": "Cola de Maravilha", "descricao": "Wonderglue. Essencial para reparos de armas.", "preco": 15, "estoque": 40 },
+            { "id": 20, "nome": "Revista Grognak", "descricao": "HQ antiga. Aumenta dano corpo a corpo.", "preco": 100, "estoque": 3 }
+        ]
+        // id clientes (nomes tirados de fallout, franquia)
+    },
+    "clientes": [
+        { "id": 1, "nome": "Courier Six", "faccao": "Mojave Express / NCR", "cargo": "Lenda do Deserto (Admin)" },
+        { "id": 2, "nome": "Sr. House", "faccao": "New Vegas Strip", "cargo": "Autocrata / CEO" },
+        { "id": 3, "nome": "Caesar (Edward Sallow)", "faccao": "Legião de Caesar", "cargo": "Imperador / Filho de Marte" },
+        { "id": 4, "nome": "General Oliver", "faccao": "New California Republic", "cargo": "General de Exército" },
+        { "id": 5, "nome": "Elder Maxson", "faccao": "Irmandade do Aço (Leste)", "cargo": "Elder Supremo" },
+        { "id": 6, "nome": "Paladin Danse", "faccao": "Irmandade do Aço", "cargo": "Paladino Comandante" },
+        { "id": 7, "nome": "Preston Garvey", "faccao": "Minutemen", "cargo": "General / Oficial Sênior" },
+        { "id": 8, "nome": "Frank Horrigan", "faccao": "Enclave", "cargo": "Agente do Serviço Secreto" },
+        { "id": 9, "nome": "Joshua Graham", "faccao": "Dead Horses", "cargo": "O Homem Queimado / Chefe de Guerra" },
+        { "id": 10, "nome": "Ulysses", "faccao": "Independente", "cargo": "Entregador / Mensageiro" },
+        { "id": 11, "nome": "Veronica Santangelo", "faccao": "Irmandade do Aço (Mojave)", "cargo": "Escriba Viajante" },
+        { "id": 12, "nome": "Craig Boone", "faccao": "Ex-NCR", "cargo": "Sniper de Elite (Aposentado)" },
+        { "id": 13, "nome": "Arcade Gannon", "faccao": "Seguidores do Apocalipse", "cargo": "Médico Pesquisador" },
+        { "id": 14, "nome": "Conrad Kellogg", "faccao": "Instituto", "cargo": "Mercenário / Executor" },
+        { "id": 15, "nome": "Nick Valentine", "faccao": "Diamond City", "cargo": "Detetive Sintético" },
+        { "id": 16, "nome": "Piper Wright", "faccao": "Publick Occurrences", "cargo": "Jornalista Chefe" },
+        { "id": 17, "nome": "John Hancock", "faccao": "Goodneighbor", "cargo": "Prefeito Ghoul" },
+        { "id": 18, "nome": "Strong", "faccao": "Super Mutantes", "cargo": "Guerreiro em busca do Leite" },
+        { "id": 19, "nome": "Three Dog", "faccao": "Galaxy News Radio", "cargo": "DJ / A Voz da Capital" },
+        { "id": 20, "nome": "Yes Man", "faccao": "Independente", "cargo": "IA Assistente de Securitron" }
+    ]
+};
+// total de tudo
+var totalProdutos = dados.loja.produtos.length;
+var totalClientes = dados.clientes.length;
+var produtoMaisCaro = dados.loja.produtos.reduce((max, item) => item.preco > max.preco ? item : max, dados.loja.produtos[0]);
+
+// resultado
+var resultado = "";
+resultado += "=== STATUS DO SISTEMA ROBCO ===\n";
+resultado += "PRODUTOS CADASTRADOS: " + totalProdutos + "\n";
+resultado += "CLIENTES REGISTRADOS: " + totalClientes + "\n";
+resultado += "-----------------------------\n";
+resultado += "ITEM DE MAIOR VALOR: " + produtoMaisCaro.nome + " (" + produtoMaisCaro.preco + " Caps)\n";
+resultado += "-----------------------------\n";
+resultado += "ADMINISTRADOR DETECTADO: " + dados.clientes[0].nome + "\n";
+resultado += "CARGO: " + dados.clientes[0].cargo + "\n";
+resultado += "FACÇÃO: " + dados.clientes[0].faccao;
+
+// exibição do alerta
+alert(resultado);
+
+// atalho: (F12)
+console.log(dados);

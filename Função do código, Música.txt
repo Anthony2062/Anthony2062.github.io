@@ -1,0 +1,24 @@
+Função do código, Música:
+<script>
+        const musica = document.getElementById('bg-music');
+        const muteBtn = document.getElementById('muteBtn');
+        musica.volume = 0.4;
+
+        function toggleMute() {
+            if (musica.paused) {
+                musica.play();
+                muteBtn.textContent = "DESLIGAR RÁDIO";
+                muteBtn.style.background = "#1aff80";
+                muteBtn.style.color = "#000";   
+            } else {
+                musica.pause();
+                muteBtn.textContent = "LIGAR RÁDIO NEW VEGAS";
+                muteBtn.style.background = "#333";
+                muteBtn.style.color = "#fff";
+            }
+        }
+        
+        document.body.addEventListener('click', () => {
+            if(musica.paused) toggleMute();
+        }, { once: true });
+    </script>
